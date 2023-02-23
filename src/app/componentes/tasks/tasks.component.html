@@ -1,0 +1,4 @@
+<app-tasks-item *ngFor="let cada of tasks" [tareas] = "cada"></app-tasks-item>
+<!--En vez de pasarle {{cada.text}} (este iba dentro >aqui<) le paso la tarea completa con [task] = "cada"-->
+<!--Aca recibimos una tarea por tarjeta [task]="cada"-->
+<!--Es como si por los "cada" activa "tareas" de app-tasks-item-->
