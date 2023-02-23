@@ -1,3 +1,5 @@
+/*Le pone display flex y justify content para que cuando ponga el butaon 
+se mantengan horizontal y aliniado */
 header {
     display: flex;
     justify-content: space-between;
