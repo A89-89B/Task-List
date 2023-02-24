@@ -1,4 +1,8 @@
 <div class="task">
-    <h3>{{tareas.text}}</h3>
+    <h3>{{tareas.text}} <fa-icon [icon]="faTimes" [ngStyle] = "{'color':'red'}"></fa-icon></h3>
     <p>{{tareas.day}}</p>
 </div>
+
+<!--Parece que <fa-icon> es una etiqueta de un componente que debe haberse agregado
+    con la instalacion del FontAwesome a traves del ng-->
+<!--Lo mismo parece pasar con [icon]-->

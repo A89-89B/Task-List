@@ -11,3 +11,4 @@ export class TasksComponent {
   tasks: Task[] = TASKS;
 
 }
+
