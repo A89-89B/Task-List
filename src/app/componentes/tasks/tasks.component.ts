@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { TaskService } from 'src/app/service/task.service';
 import { Task } from 'src/app/Task';
-import { TASKS } from 'src/app/mock-task';
 
 @Component({
   selector: 'app-tasks',
@@ -8,7 +8,27 @@ import { TASKS } from 'src/app/mock-task';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
-  tasks: Task[] = TASKS;
+  tasks: Task[] = [];
+  
+  constructor(private taskService: TaskService){}
 
+  ngOnInit(): void {
+    this.taskService.getTasks().subscribe((tasks)=>(this.tasks = tasks));
+  }
 }
+
+//El servicio ya NO lo va a manejar el componente a traves del mock
+//import { Task } from 'src/app/Task';        \
+//import { TASKS } from 'src/app/mock-task';   \_ESTO SE CAMBIO
+//export class TasksComponent {                /
+//  tasks: Task[] = TASKS;                    /
+
+//Agregue el constructor e inicializo el servicio como privado
+
+//En el metodo ngOnInit cuando monte el componente, llamo a nuestro servicio y
+//guardo la lista de tareas en nuestro "tasks"(tasks: Task[] = [])
+
+//cuando el getTasks finaliza recibimos un coreback que recibe un parametro por respuesta, las tareas en este caso
+//subscribe son como las promesas
+//Esto es como las promise, el asyn y el await, el metodo suscribe de los observable
 
