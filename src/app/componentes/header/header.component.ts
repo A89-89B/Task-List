@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { UiService } from 'src/app/service/ui.service';
+import { Router } from '@angular/router'//Para saber en que ruta estamos
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,21 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   title:string = 'My Task List';
+  showAddTask: boolean = false;
+  subscription?: Subscription;
+
+  constructor(
+    private uiService: UiService, 
+    private router: Router){
+    this.subscription = this.uiService.onToggle().subscribe(value => this.showAddTask = value)//el valor que recibe lo guarda en showAddTask
+  }
 
   toggleAddTask(){
-    console.log("toggleAddTask")
+    this.uiService.toggleAddTask();
+  }
+
+  hasRoute(route: string){
+    return this.router.url === route;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from 'src/app/Task';
 import { TASKS } from 'src/app/mock-task';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -9,10 +9,23 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./tasks-item.component.css']
 })
 export class TasksItemComponent {
-  @Input() tareas: Task = TASKS[0]
+  @Input() task: Task = TASKS[0]
+  @Output() onDeleteTask: EventEmitter<Task> = new EventEmitter()
+  @Output() onToggleReminder: EventEmitter<Task> = new EventEmitter()
+  
   faTimes = faTimes;
 
+  onDelete(task:Task){
+    this.onDeleteTask.emit(task);
+  }
+
+  onToggle(task: Task){
+    this.onToggleReminder.emit(task)
+  }
 }
 
 //agrego el icono que quiero usar a una varible,
 //icono previamente importado(import{faTimes}from...) LEER "COMO REVISAR"
+
+//LUEGO DE ACOMODAR EL SERVIDOR
+//Tuve que cambiar "tareas:Task" por task (en @Input)

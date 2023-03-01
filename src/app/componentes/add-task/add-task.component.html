@@ -1,0 +1,25 @@
+<form class="add-form" (ngSubmit)="onSubmit()" *ngIf="showAddTask">
+    <div class="form-control">
+        <label for="text">Task</label>
+        <input type="text" name="text" id="text" placeholder="Add Task Text" [(ngModel)]="text">
+    </div>
+
+    <div class="form-control">
+        <label for="day">Day & Time</label>
+        <input type="text" name="day" id="day" placeholder="Add Day & Time" [(ngModel)]="day">
+    </div>
+
+    <div class="form-control form-control-check">
+        <label for="reminder">Reminder</label>
+        <input type="checkbox" name="reminder" id="reminder" [(ngModel)]="reminder">
+    </div>
+
+    <input type="submit" value="Save Task" class="btn btn-block">
+</form>
+
+<!--Agrego en app-module el FormsModule-->
+
+<!--Doble binding [(ngModel)], o sea se guarda tambien en el contolador y se visualiza-->
+
+<!--(ngSubmit) es una directiva para reconocer cuando se haga click en submit-->
+<!--*ngIf otra directiva que mostrara el componente si se cumple la condición-->
